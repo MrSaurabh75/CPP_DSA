@@ -1,52 +1,35 @@
-// Linear Search in array :
+// Linnear Searching :
 // #include<iostream>
 // using namespace std;
-// int main(){
-//     int n;
-//     cout<<"Enter the size of array : ";
-//     cin>>n;
-//     int arr[n];
-//     cout<<"Enter elements "<<n<<" in array"<<endl;
-//     for(int i=0;i<=n;i++){
-//         cin>>arr[i];
-//     }
-//     int key;
-//     cout<<"Enter key to search : ";
-//     cin>>key;
+// int linearSearch(int arr[],int n,int key){
 //     for(int i=0;i<n;i++){
-//         if(key==arr[i]){
-//             cout<<key<<" is present at "<<i<<" index";
-//         }
-//     }
-// }
-
-// Write a function for linear search :
-// #include<iostream>
-// using namespace std;
-// int linearSearch(int n,int arr[],int key){
-//     for(int i=0;i<n;i++){
-//         if(key==arr[i]){
+//         if(arr[i]==key){
 //             return i;
 //         }
 //     }
 //     return -1;
 // }
 // int main(){
-//     int key,n;
-//     int arr[n];
-//     cout<<"Enter the size of array : ";
+//     int n;
+//     cout<<"Enter size of array :";
 //     cin>>n;
-//     cout<<"Enter elements "<<n<<" in array"<<endl;
-//     for(int i=0;i<=n;i++){
+//     int arr[n];
+//     for(int i=0;i<n;i++){
 //         cin>>arr[i];
 //     }
+//     int key;
 //     cout<<"Enter key to search : ";
 //     cin>>key;
-//     cout<<linearSearch(n,arr,key);
-//     return 0;
+//     int result = linearSearch(arr,n,key);
+//     if(result!=-1){
+//         cout<<"Key present at index "<<result;
+//     }
+//     else{
+//         cout<<"Key is not present!";
+//     }
 // }
 
-// Write a function for binary search
+// Binary search :
 #include<iostream>
 using namespace std;
 int binarySearch(int arr[],int n,int key){
@@ -60,20 +43,29 @@ int binarySearch(int arr[],int n,int key){
         else if(arr[mid]>key){
             e = mid-1;
         }
-        else{
-            s = mid+1;
+        else if(arr[mid]<key){
+            s=mid+1;
         }
     }
     return -1;
 }
 int main(){
     int n;
+    cout<<"Enter size of array :";
     cin>>n;
     int arr[n];
+    cout<<"Enter elements in array : "<<endl;
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
     int key;
+    cout<<"Enter key to search :";
     cin>>key;
-    cout<<binarySearch(arr,n,key);
+    int result = binarySearch(arr,n,key);
+    if(result!=-1){
+        cout<<"Key is present at index "<<result;
+    }
+    else{
+        cout<<"Key is not present!";
+    }
 }
