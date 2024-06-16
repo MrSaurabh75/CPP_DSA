@@ -87,3 +87,41 @@
 // int main(){
 //     cout<<move("axbcvdxbvgfvxbfhx");
 // }
+
+// Print all permutations of a string 
+// #include<iostream>
+// using namespace std;
+// void Permutations(string s,string ans){
+//     if(s.length()==0){
+//         cout<<ans<<endl;
+//         return;
+//     }
+//     for(int i=0;i<s.length();i++){
+//         char ch = s[i];
+//         string ros = s.substr(0,i)+s.substr(i,i+1);
+//         Permutations(ros,ans+ch);
+//     }
+// }
+// int main(){
+//     Permutations("ABC"," ");
+// }
+
+// 0-1 Knapsacks problem 
+#include<iostream>
+using namespace std;
+int Knapsack(int value[],int wt[],int n,int w){
+    if(n==0 || w==0){
+        return 0;
+    }
+    if(wt[n-1]>w){
+        return Knapsack(value,wt,n-1,w);
+    }
+    return max(Knapsack(value,wt,n-1,w-wt[n-1]+value[n-1]),Knapsack(value,wt,n-1,w));
+}
+int main(){
+    int value[] = {100,50,150};
+    int wt [] = {10,20,30};
+    int n=3;
+    int w=50;
+    cout<<Knapsack(value,wt,n,w);
+}
