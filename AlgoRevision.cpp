@@ -147,3 +147,20 @@ using namespace std;
 //     cout<<InEx(n,a,b);
 // }
 
+// Tower of Hanoi
+// void TowerOfHanoi(int n,char src,char dest,char help){
+//     if(n==0){
+//         return;
+//     }
+//     TowerOfHanoi(n-1,src,help,dest);
+//     cout<<"Move from "<<src<<" to "<<dest<<endl;
+//     TowerOfHanoi(n-1,help,dest,src);
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     char a,b,c;
+//     cin>>a>>b>>c;
+//     TowerOfHanoi(n,a,b,c);
+// }
+
