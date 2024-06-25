@@ -5,7 +5,7 @@ class node{
     public:
     int data;
     node* next;
-    Node(int val){
+    node(int val){
         data = val;
         next = NULL;
     }
