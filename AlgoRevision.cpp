@@ -165,4 +165,100 @@ using namespace std;
 // }
 
 // Print a Linked List :
-class
+// class node{
+//     public:
+//     int data;
+//     node* next;
+//     node(int val){
+//         data = val;
+//         next = NULL;
+//     }
+// };
+// void insertToEnd(node* &head,int val){
+//     node* n = new node(val);
+//     if(head==NULL){
+//         head = n;
+//         return;
+//     }
+//     node* temp = head;
+//     while(temp->next!=NULL){
+//         temp=temp->next;
+//     } 
+//     temp->next=n;
+// }
+// void display(node* head){
+//     node* temp = head;
+//     while(temp!=NULL){
+//         cout<<temp->data<<"->";
+//         temp = temp->next;
+//     }
+// }
+// int main(){
+//     node* head = NULL;
+//     insertToEnd(head,1);
+//     insertToEnd(head,2);
+//     insertToEnd(head,3);
+//     insertToEnd(head,4);
+//     display(head);
+// }
+
+// Delete a Node :
+class node{
+    public:
+    int data;
+    node* next;
+    node(int val){
+        data = val;
+        next=NULL;
+    }
+};
+void insertNodes(node* &head,int val){
+    node* n = new node(val);
+    if(head==NULL){
+        head = n;
+        return;
+    }
+    node* temp = head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next=n;
+}
+void display(node* head){
+    node* temp=head;
+    while(temp->next!=NULL){
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }
+}
+void deleteHead(node* &head){
+    node* todelete = head;
+    head = head->next;
+    delete todelete;
+}
+void deletion(node* &head,int val){
+    if(head==NULL){
+        return;
+    }
+    if(head->next==NULL){
+        deleteHead(head);
+        return;
+    }
+    node* temp = head;
+    while(temp->next->data!=val){
+        temp = temp->next;
+    }
+    node* todelete = temp->next;
+    temp->next = temp->next->next;
+    delete todelete;
+}
+int main(){
+    node* head = NULL;
+    insertNodes(head,1);
+    insertNodes(head,2);
+    insertNodes(head,3);
+    insertNodes(head,4);
+    // deletion(head,1);
+    // deleteHead(head);
+    display(head);
+}
