@@ -114,7 +114,7 @@ class node{
         next = NULL;
     }
 };
-void insertNode(node* &head,int val){
+void insertToHead(node* &head,int val){
     node* n = new node(val);
     if(head==NULL){
         head = n;
@@ -122,39 +122,56 @@ void insertNode(node* &head,int val){
     }
     node* temp = head;
     while(temp->next!=NULL){
-        temp=temp->next;
+        temp = temp->next;
     }
-    temp->next=n;
+    temp->next = n;
 }
-void display(node* head){
-    node* temp= head;
+void display(node* &head){
+    node* temp = head;
     while(temp!=NULL){
         cout<<temp->data<<"->";
         temp = temp->next;
     }
-    cout<<"NULL"<<endl;
+    cout<<"Null"<<endl;
 }
-node* reverse(node* &head){
-    node* prevptr = NULL;
-    node* currptr = head;
-    node* nextptr;
-    while(currptr!=NULL){
-        nextptr = currptr->next;
-        currptr->next = prevptr;
+// Iterative Way :
+// node* reverse(node* &head){
+//     node* prevptr = NULL;
+//     node* currptr = head;
+//     node* nextptr;
+//     while(currptr!=NULL){
+//         nextptr = currptr->next;
+//         currptr->next = prevptr;
 
-        prevptr = currptr;
-        currptr = nextptr;
+//         prevptr = currptr;
+//         currptr = nextptr;
+//     }
+//     return prevptr;
+// }
+// Recursive Method :
+// node* recursivereverse(node* &head){
+//     if(head==NULL || head->next==NULL){
+//         return head;
+//     }
+//     node* newhead = recursivereverse(head->next);
+//     head->next->next=head;
+//     head->next=NULL;
+//     return newhead;
+// }
+// int main(){
+//     node* head = NULL;
+//     insertToHead(head,1);
+//     insertToHead(head,2);
+//     insertToHead(head,3);
+//     insertToHead(head,4);
+//     cout<<"Original Linked List :"<<endl;
+//     display(head);
+//     // node* head2 = reverse(head);
+//     // cout<<"Reversed Linked List :"<<endl;
+//     // display(head2);
+//     node* head2 = recursivereverse(head);
+//     cout<<"Reversed Linked List :"<<endl;
+//     display(head2);
 
-    }
-    return prevptr;
-}
-int main(){
-    node* head = NULL;
-    insertNode(head,1);
-    insertNode(head,2);
-    insertNode(head,3);
-    display(head);
-    node* head2 = reverse(head);
-    display(head2);
-}
+// }
 
