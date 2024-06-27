@@ -203,16 +203,77 @@ using namespace std;
 // }
 
 // Delete a Node :
+// class node{
+//     public:
+//     int data;
+//     node* next;
+//     node(int val){
+//         data = val;
+//         next=NULL;
+//     }
+// };
+// void insertNodes(node* &head,int val){
+//     node* n = new node(val);
+//     if(head==NULL){
+//         head = n;
+//         return;
+//     }
+//     node* temp = head;
+//     while(temp->next!=NULL){
+//         temp=temp->next;
+//     }
+//     temp->next=n;
+// }
+// void display(node* head){
+//     node* temp=head;
+//     while(temp->next!=NULL){
+//         cout<<temp->data<<"->";
+//         temp=temp->next;
+//     }
+// }
+// void deleteHead(node* &head){
+//     node* todelete = head;
+//     head = head->next;
+//     delete todelete;
+// }
+// void deletion(node* &head,int val){
+//     if(head==NULL){
+//         return;
+//     }
+//     if(head->next==NULL){
+//         deleteHead(head);
+//         return;
+//     }
+//     node* temp = head;
+//     while(temp->next->data!=val){
+//         temp = temp->next;
+//     }
+//     node* todelete = temp->next;
+//     temp->next = temp->next->next;
+//     delete todelete;
+// }
+// int main(){
+//     node* head = NULL;
+//     insertNodes(head,1);
+//     insertNodes(head,2);
+//     insertNodes(head,3);
+//     insertNodes(head,4);
+//     // deletion(head,1);
+//     // deleteHead(head);
+//     display(head);
+// }
+
+// Reverse a Linked List :
 class node{
-    public:
-    int data;
-    node* next;
-    node(int val){
-        data = val;
-        next=NULL;
-    }
+  public:
+  int data;
+  node* next;
+  node(int val){
+    data = val;
+    next = NULL;
+  }  
 };
-void insertNodes(node* &head,int val){
+void insertNode(node* &head,int val){
     node* n = new node(val);
     if(head==NULL){
         head = n;
@@ -220,45 +281,73 @@ void insertNodes(node* &head,int val){
     }
     node* temp = head;
     while(temp->next!=NULL){
-        temp=temp->next;
+        temp = temp->next;
     }
-    temp->next=n;
+    temp->next = n;
 }
-void display(node* head){
-    node* temp=head;
-    while(temp->next!=NULL){
+void display(node* &head){
+    node* temp = head;
+    while(temp!=NULL){
         cout<<temp->data<<"->";
-        temp=temp->next;
+        temp = temp->next;
     }
+    cout<<"NULL"<<endl;
 }
 void deleteHead(node* &head){
     node* todelete = head;
     head = head->next;
     delete todelete;
 }
-void deletion(node* &head,int val){
+void deleteNode(node* &head,int val){
     if(head==NULL){
         return;
     }
-    if(head->next==NULL){
+    if(head->data==val){
         deleteHead(head);
         return;
     }
     node* temp = head;
     while(temp->next->data!=val){
-        temp = temp->next;
+        temp=temp->next;
     }
-    node* todelete = temp->next;
+    node* deletenode = temp->next;
     temp->next = temp->next->next;
-    delete todelete;
+    delete deletenode;
+}
+// node* reverse(node* &head){
+//     node* prevptr = NULL;
+//     node* currptr = head;
+//     node* nextptr;
+//     while(currptr!=NULL){
+//         nextptr = currptr->next;
+//         currptr->next = prevptr;
+
+//         prevptr = currptr;
+//         currptr = nextptr;
+//     }
+//     return prevptr;
+// }
+node* recrev(node* &head){
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    node* newHead = recrev(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return newHead;
+
 }
 int main(){
     node* head = NULL;
-    insertNodes(head,1);
-    insertNodes(head,2);
-    insertNodes(head,3);
-    insertNodes(head,4);
-    // deletion(head,1);
-    // deleteHead(head);
+    insertNode(head,1);
+    insertNode(head,2);
+    insertNode(head,3);
+    insertNode(head,4);
+    // deleteNode(head,1);
+
     display(head);
+    // node* head2 = reverse(head);
+    // display(head2);
+    node* head2 = recrev(head);
+    display(head2);
 }
