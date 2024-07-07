@@ -264,56 +264,56 @@ using namespace std;
 // }
 
 // Reverse a Linked List :
-class node{
-  public:
-  int data;
-  node* next;
-  node(int val){
-    data = val;
-    next = NULL;
-  }  
-};
-void insertNode(node* &head,int val){
-    node* n = new node(val);
-    if(head==NULL){
-        head = n;
-        return;
-    }
-    node* temp = head;
-    while(temp->next!=NULL){
-        temp = temp->next;
-    }
-    temp->next = n;
-}
-void display(node* &head){
-    node* temp = head;
-    while(temp!=NULL){
-        cout<<temp->data<<"->";
-        temp = temp->next;
-    }
-    cout<<"NULL"<<endl;
-}
-void deleteHead(node* &head){
-    node* todelete = head;
-    head = head->next;
-    delete todelete;
-}
-void deleteNode(node* &head,int val){
-    if(head==NULL){
-        return;
-    }
-    if(head->data==val){
-        deleteHead(head);
-        return;
-    }
-    node* temp = head;
-    while(temp->next->data!=val){
-        temp=temp->next;
-    }
-    node* deletenode = temp->next;
-    temp->next = temp->next->next;
-    delete deletenode;
-}
+// class node{
+//   public:
+//   int data;
+//   node* next;
+//   node(int val){
+//     data = val;
+//     next = NULL;
+//   }  
+// };
+// void insertNode(node* &head,int val){
+//     node* n = new node(val);
+//     if(head==NULL){
+//         head = n;
+//         return;
+//     }
+//     node* temp = head;
+//     while(temp->next!=NULL){
+//         temp = temp->next;
+//     }
+//     temp->next = n;
+// }
+// void display(node* &head){
+//     node* temp = head;
+//     while(temp!=NULL){
+//         cout<<temp->data<<"->";
+//         temp = temp->next;
+//     }
+//     cout<<"NULL"<<endl;
+// }
+// void deleteHead(node* &head){
+//     node* todelete = head;
+//     head = head->next;
+//     delete todelete;
+// }
+// void deleteNode(node* &head,int val){
+//     if(head==NULL){
+//         return;
+//     }
+//     if(head->data==val){
+//         deleteHead(head);
+//         return;
+//     }
+//     node* temp = head;
+//     while(temp->next->data!=val){
+//         temp=temp->next;
+//     }
+//     node* deletenode = temp->next;
+//     temp->next = temp->next->next;
+//     delete deletenode;
+// }
 // node* reverse(node* &head){
 //     node* prevptr = NULL;
 //     node* currptr = head;
@@ -327,27 +327,79 @@ void deleteNode(node* &head,int val){
 //     }
 //     return prevptr;
 // }
-node* recrev(node* &head){
-    if(head==NULL || head->next==NULL){
-        return head;
+// node* recrev(node* &head){
+//     if(head==NULL || head->next==NULL){
+//         return head;
+//     }
+//     node* newHead = recrev(head->next);
+//     head->next->next = head;
+//     head->next = NULL;
+//     return newHead;
+
+// }
+// int main(){
+//     node* head = NULL;
+//     insertNode(head,1);
+//     insertNode(head,2);
+//     insertNode(head,3);
+//     insertNode(head,4);
+//     // deleteNode(head,1);
+
+//     display(head);
+//     // node* head2 = reverse(head);
+//     // display(head2);
+//     node* head2 = recrev(head);
+//     display(head2);
+// }
+
+// Stack Oprations :
+#define n 100
+class Stack{
+    int* arr;
+    int top;
+    public:
+    Stack(){
+        arr = new int[n];
+        top = -1;
     }
-    node* newHead = recrev(head->next);
-    head->next->next = head;
-    head->next = NULL;
-    return newHead;
-
-}
+    void push(int x){
+        if(top==n-1){
+            cout<<"Stack Overflow"<<endl;
+            return;
+        }
+        top++;
+        arr[top]=x;
+    }
+    void pop(){
+        if(top==-1){
+            cout<<"Stack is empty!";
+            return;
+        }
+        top--;
+    }
+    int topValue(){
+        if(top==-1){
+            return -1;
+        }
+        return arr[top];
+    }
+    bool empty(){
+        return top==-1;
+    }
+};
 int main(){
-    node* head = NULL;
-    insertNode(head,1);
-    insertNode(head,2);
-    insertNode(head,3);
-    insertNode(head,4);
-    // deleteNode(head,1);
+    Stack st;
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+    cout<<st.topValue();
+    st.pop();
+    cout<<st.topValue();
+    st.pop();
+    cout<<st.topValue();
+    st.pop();
+    st.pop();
+    cout<<st.empty();
 
-    display(head);
-    // node* head2 = reverse(head);
-    // display(head2);
-    node* head2 = recrev(head);
-    display(head2);
 }
