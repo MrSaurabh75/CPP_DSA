@@ -363,21 +363,19 @@ class Stack{
         top = -1;
     }
     void push(int x){
-        if(top==n-1){
+        if(top == n-1){
             cout<<"Stack Overflow"<<endl;
-            return;
         }
         top++;
         arr[top]=x;
     }
     void pop(){
         if(top==-1){
-            cout<<"Stack is empty!";
-            return;
+            cout<<"Stack is empty!"<<endl;
         }
         top--;
     }
-    int topValue(){
+    int topVal(){
         if(top==-1){
             return -1;
         }
@@ -388,18 +386,18 @@ class Stack{
     }
 };
 int main(){
-    Stack st;
-    st.push(1);
-    st.push(2);
-    st.push(3);
-    st.push(4);
-    cout<<st.topValue();
-    st.pop();
-    cout<<st.topValue();
-    st.pop();
-    cout<<st.topValue();
-    st.pop();
-    st.pop();
-    cout<<st.empty();
-
+    Stack s;
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+    cout<<s.topVal()<<endl;
+    s.pop();
+    cout<<s.topVal()<<endl;
+    s.pop();
+    cout<<s.topVal()<<endl;
+    s.pop();
+    cout<<s.topVal()<<endl;
+    s.pop();
+    cout<<s.empty();
 }
