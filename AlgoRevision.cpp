@@ -353,51 +353,72 @@ using namespace std;
 // }
 
 // Stack Oprations :
-#define n 100
-class Stack{
-    int* arr;
-    int top;
-    public:
-    Stack(){
-        arr = new int[n];
-        top = -1;
-    }
-    void push(int x){
-        if(top == n-1){
-            cout<<"Stack Overflow"<<endl;
+// #define n 100
+// class Stack{
+//     int* arr;
+//     int top;
+//     public:
+//     Stack(){
+//         arr = new int[n];
+//         top = -1;
+//     }
+//     void push(int x){
+//         if(top == n-1){
+//             cout<<"Stack Overflow"<<endl;
+//         }
+//         top++;
+//         arr[top]=x;
+//     }
+//     void pop(){
+//         if(top==-1){
+//             cout<<"Stack is empty!"<<endl;
+//         }
+//         top--;
+//     }
+//     int topVal(){
+//         if(top==-1){
+//             return -1;
+//         }
+//         return arr[top];
+//     }
+//     bool empty(){
+//         return top==-1;
+//     }
+// };
+// int main(){
+//     Stack s;
+//     s.push(1);
+//     s.push(2);
+//     s.push(3);
+//     s.push(4);
+//     cout<<s.topVal()<<endl;
+//     s.pop();
+//     cout<<s.topVal()<<endl;
+//     s.pop();
+//     cout<<s.topVal()<<endl;
+//     s.pop();
+//     cout<<s.topVal()<<endl;
+//     s.pop();
+//     cout<<s.empty();
+// }
+
+#include<stack>
+void revStack(string s){
+    stack<string> st;
+    for(int i=0;i<s.length();i++){
+        string word = "";
+        while(s[i]!=' ' && i<s.length()){
+            word+=s[i];
+            i++;
         }
-        top++;
-        arr[top]=x;
+        st.push(word);
     }
-    void pop(){
-        if(top==-1){
-            cout<<"Stack is empty!"<<endl;
-        }
-        top--;
-    }
-    int topVal(){
-        if(top==-1){
-            return -1;
-        }
-        return arr[top];
-    }
-    bool empty(){
-        return top==-1;
-    }
-};
+    while(!st.empty()){
+        cout<<st.top()<<" ";
+        st.pop();
+    }cout<<endl;
+}
 int main(){
-    Stack s;
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s.push(4);
-    cout<<s.topVal()<<endl;
-    s.pop();
-    cout<<s.topVal()<<endl;
-    s.pop();
-    cout<<s.topVal()<<endl;
-    s.pop();
-    cout<<s.topVal()<<endl;
-    s.pop();
-    cout<<s.empty();
+    string s = "Saurabh Chorge";
+    revStack(s);
 }
