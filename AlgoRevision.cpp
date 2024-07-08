@@ -363,15 +363,17 @@ using namespace std;
 //         top = -1;
 //     }
 //     void push(int x){
-//         if(top == n-1){
+//         if(top==n-1){
 //             cout<<"Stack Overflow"<<endl;
+//             return;
 //         }
 //         top++;
 //         arr[top]=x;
 //     }
 //     void pop(){
 //         if(top==-1){
-//             cout<<"Stack is empty!"<<endl;
+//             cout<<"Stack is empty"<<endl;
+//             return;
 //         }
 //         top--;
 //     }
@@ -381,44 +383,80 @@ using namespace std;
 //         }
 //         return arr[top];
 //     }
-//     bool empty(){
+//     bool isEmpty(){
 //         return top==-1;
 //     }
 // };
 // int main(){
-//     Stack s;
-//     s.push(1);
-//     s.push(2);
-//     s.push(3);
-//     s.push(4);
-//     cout<<s.topVal()<<endl;
-//     s.pop();
-//     cout<<s.topVal()<<endl;
-//     s.pop();
-//     cout<<s.topVal()<<endl;
-//     s.pop();
-//     cout<<s.topVal()<<endl;
-//     s.pop();
-//     cout<<s.empty();
+//     Stack st;
+//     st.push(1);
+//     st.push(2);
+//     st.push(3);
+//     st.push(4);
+    
+//     while(st.isEmpty()==0){
+//         cout<<st.topVal()<<" ";
+//         st.pop();
+//     }cout<<endl;
 // }
 
+// Reverse a Sentence in stack :
+// #include<stack>
+// void reverseSen(string s){
+//     stack<string> st;
+//     int len = s.length();
+//     for(int i=0;i<len;i++){
+//         string word = "";
+//         while(s[i]!=' ' && i<len){
+//             word+=s[i];
+//             i++;
+//         }
+//         st.push(word);
+//     }
+//     while(!st.empty()){
+//         cout<<st.top()<<" ";
+//         st.pop();
+//     }
+// }
+// int main(){
+//     string s = "Saurabh chorge MCA";
+//     reverseSen(s);
+// }
+
+// Reverse Stack :
 #include<stack>
-void revStack(string s){
-    stack<string> st;
-    for(int i=0;i<s.length();i++){
-        string word = "";
-        while(s[i]!=' ' && i<s.length()){
-            word+=s[i];
-            i++;
-        }
-        st.push(word);
+void insertAtBottom(stack<int> &st,int e){
+    if(st.empty()){
+        st.push(e);
+        return;
     }
-    while(!st.empty()){
-        cout<<st.top()<<" ";
-        st.pop();
-    }cout<<endl;
+    int tope = st.top();
+    st.pop();
+    insertAtBottom(st,e);
+    st.push(tope);
+
+}
+void rev(stack<int> &st){
+    if(st.empty()){
+        return;
+    }
+    int e = st.top();
+    st.pop();
+    rev(st);
+    insertAtBottom(st,e);
 }
 int main(){
-    string s = "Saurabh Chorge";
-    revStack(s);
+    stack<int> st;
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+    rev(st);
+    while(!st.empty())
+    {
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    
+
 }
