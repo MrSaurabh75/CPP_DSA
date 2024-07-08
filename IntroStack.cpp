@@ -74,3 +74,40 @@
 //     string s = "Saurabh Chorge";
 //     ReverseSen(s);
 // }
+
+// Reverse a Stack :
+// #include<iostream>
+// #include<stack>
+// using namespace std;
+// void insertAtBottom(stack<int> &st,int e){
+//     if(st.empty()){
+//         st.push(e);
+//         return;
+//     }
+//     int tope = st.top();
+//     st.pop();
+//     insertAtBottom(st,e);
+//     st.push(tope);
+// }
+// void reverse(stack<int> &st){
+//     if(st.empty()){
+//         return;
+//     }
+//     int e = st.top();
+//     st.pop();
+//     reverse(st);
+//     insertAtBottom(st,e);
+// }                                          
+// int main(){
+//     stack<int> s;
+//     s.push(1);
+//     s.push(2);
+//     s.push(3);
+//     s.push(4);
+//     reverse(s);
+//     while(!s.empty()){
+//         cout<<s.top()<<" ";
+//         s.pop();
+//     }
+//     cout<<endl;
+// }
