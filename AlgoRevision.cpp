@@ -424,39 +424,78 @@ using namespace std;
 // }
 
 // Reverse Stack :
-#include<stack>
-void insertAtBottom(stack<int> &st,int e){
-    if(st.empty()){
-        st.push(e);
-        return;
-    }
-    int tope = st.top();
-    st.pop();
-    insertAtBottom(st,e);
-    st.push(tope);
+// #include<stack>
+// void insertAtBottom(stack<int> &st,int e){
+//     if(st.empty()){
+//         st.push(e);
+//         return;
+//     }
+//     int topVal = st.top();
+//     st.pop();
+//     insertAtBottom(st,e);
+//     st.push(topVal);
+// }
+// void rev(stack<int> &st){
+//     if(st.empty()){
+//         return;
+//     }
+//     int e = st.top();
+//     st.pop();
+//     rev(st);
+//     insertAtBottom(st,e);
+// }
+// int main(){
+//     stack<int> st;
+//     st.push(1);
+//     st.push(2);
+//     st.push(3);
+//     st.push(4);
+//     rev(st);
+//     while(!st.empty()){
+//         cout<<st.top()<<" ";
+//         st.pop();
+//     }
+//     cout<<endl;
+// }
 
-}
-void rev(stack<int> &st){
-    if(st.empty()){
-        return;
-    }
-    int e = st.top();
-    st.pop();
-    rev(st);
-    insertAtBottom(st,e);
-}
-int main(){
-    stack<int> st;
-    st.push(1);
-    st.push(2);
-    st.push(3);
-    st.push(4);
-    rev(st);
-    while(!st.empty())
-    {
-        cout<<st.top()<<" ";
-        st.pop();
-    }
-    
+// Prefix Evalution :
+// #include<stack>
+// #include<math.h>
+// int prefixEvalution(string s){
+//     stack<int> st;
+//     for(int i=s.length()-1;i>=0;i--){
+//         if(s[i]>='0' && s[i]<='9'){
+//             st.push(s[i]-'0');
+//         }
+//         else{
+//             int op1 = st.top();
+//             st.pop();
+//             int op2 = st.top();
+//             st.pop();
+//             switch (s[i])
+//             {
+//             case '+':
+//                 st.push(op1+op2);
+//                 break;
+//             case '-':
+//                 st.push(op1-op2);
+//                 break;
+//             case '*':
+//                 st.push(op1*op2);
+//                 break;
+//             case '/':
+//                 st.push(op1/op2);
+//                 break;
+//             case '^':
+//                 st.push(pow(op1,op2));
+//                 break;
+        
+//             }
+//         }
+//     }
+//     return st.top();
+// }
+// int main(){
+//     cout<<prefixEvalution("-+7*45+20");
+// }
 
-}
