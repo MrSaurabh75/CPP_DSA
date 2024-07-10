@@ -499,3 +499,14 @@ using namespace std;
 //     cout<<prefixEvalution("-+7*45+20");
 // }
 
+// Balanced Paenthesis :
+#include<stack>
+int main(){
+    string s = "{({[]})}";
+    if(isValid()){
+        cout<<"Balanced";
+    }
+    else{
+        cout<<"Un-Balanced";
+    }
+}
